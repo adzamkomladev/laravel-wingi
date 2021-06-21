@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LoginUser;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
 use App\Http\Controllers\Dashboard\ShowClientDashboard;
 use App\Http\Controllers\ShowWelcomePage;
@@ -26,6 +27,8 @@ Route::get('/', ShowWelcomePage::class)->name('welcome');
 Route::prefix('auth')->group(function () {
     Route::get('login', [LoginController::class, 'show'])->name('auth.login.show');
     Route::post('login', [LoginController::class, 'login'])->name('auth.login');
+    Route::get('register', [RegisterController::class, 'show'])->name('auth.register.show');
+    Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
 });
 
 // Client Routes that need authentication
