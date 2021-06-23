@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Events\Auth\LoggedIn;
-use App\Listeners\Auth\PersistCart;
+use App\Listeners\Cart\PersistCart;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

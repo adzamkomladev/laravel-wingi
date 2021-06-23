@@ -40,10 +40,16 @@ class WelcomeUserNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $appName = config('app.name');
+        $subject = "Welcome to {$appName}";
+        $greeting = "Hello, {$notifiable->name}!";
+
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject($subject)
+            ->greeting($greeting)
+            ->line("Welcome to {$appName}! You can go to your account by clicking the link below.")
+            ->action('Shop Now', url('/'))
+            ->line("Shop for your favourite products at {$appName}!");
     }
 
     /**
