@@ -4,7 +4,7 @@
 
     <form action="{{ route('auth.register') }}" method="POST">
         @csrf
-        <h3>Login</h3>
+        <h3>Register</h3>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
@@ -33,7 +33,8 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
+        <a class="link" href="{{ route('auth.login.show') }}">Login instead?</a>
 
 @endsection

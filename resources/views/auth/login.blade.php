@@ -23,4 +23,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
+    <a class="link d-block" href="{{ route('auth.reset-password.create') }}">Forgot password?</a>
+    <a class="link" href="{{ route('auth.register.show') }}">New here? Sign up</a>
+
 @endsection

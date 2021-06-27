@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LoginUser;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
 use App\Http\Controllers\Dashboard\ShowClientDashboard;
 use App\Http\Controllers\ShowWelcomePage;
@@ -29,6 +30,9 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [LoginController::class, 'login'])->name('auth.login');
     Route::get('register', [RegisterController::class, 'show'])->name('auth.register.show');
     Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
+
+    Route::get('reset-password', [ResetPasswordController::class, 'update'])->name('auth.reset-password');
+    Route::get('create-reset-password-link', [ResetPasswordController::class, 'create'])->name('auth.reset-password.create');
 });
 
 // Client Routes that need authentication

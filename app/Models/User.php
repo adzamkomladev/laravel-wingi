@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +25,7 @@ class User extends Authenticatable
         'avatar',
         'role',
         'password',
+        'reset_token'
     ];
 
     /**
@@ -47,5 +50,11 @@ class User extends Authenticatable
     public function getIsAdminAttribute(): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function scopeValidCode(Builder $query, string $resetToken): Builder
+    {
+        return $query->where('reset_token', $resetToken)
+            ->whereDate('updated_at', '>=', Carbon::now()->subDays(7)->toDateString());
     }
 }
