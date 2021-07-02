@@ -20,7 +20,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.categories.index', [
-            'posts' => Category::where('name', 'like', '%' . $this->search . '%')
+            'categories' => Category::where('name', 'like', '%' . $this->search . '%')
                 ->orWhere('name', 'like', '%' . $this->search . '%')
                 ->paginate(8),
         ]);

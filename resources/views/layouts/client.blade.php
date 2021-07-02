@@ -19,6 +19,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous" defer>
     </script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
 </head>
 
 <body>
@@ -32,13 +34,16 @@
             <div class="collapse navbar-collapse" id="navbarID">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home </a>
+
+                    @guest
                     <a class="nav-link" aria-current="page" href="{{ route('auth.login.show') }}">Login </a>
                     <a class="nav-link" aria-current="page" href="{{ route('auth.register.show') }}">Register </a>
+                    @endguest
                 </div>
             </div>
         </div>
     </nav>
-    
+
     @yield('content')
 
     @livewireScripts

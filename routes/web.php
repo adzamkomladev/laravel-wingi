@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LoginUser;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Brand\BrandController;
+use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
 use App\Http\Controllers\Dashboard\ShowClientDashboard;
 use App\Http\Controllers\ShowWelcomePage;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,5 +47,11 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () {
 
     // Dashboard
-    Route::get('dashboard', ShowAdminDashboard::class);
+    Route::get('dashboard', ShowAdminDashboard::class)->name('admin.dashboard');
+
+    // Categories
+    Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+    // Brands
+    Route::get('brands', [BrandController::class, 'index'])->name('admin.brands.index');
 });

@@ -19,9 +19,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous" defer>
     </script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('welcome') }}">WingiShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}">Dashboard </a>
+                    <a class="nav-link" aria-current="page" href="{{ route('admin.categories.index') }}">Categories </a>
+                    <a class="nav-link" aria-current="page" href="{{ route('admin.brands.index') }}">Brands </a>
+                </div>
+            </div>
+        </div>
+    </nav>
     @yield('content')
 
     @livewireScripts

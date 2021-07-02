@@ -5,7 +5,7 @@
         @endif
 
         @if ($showForm)
-            @livewire('auth.create-reset-password-link-form', )
+            @livewire('auth.create-reset-password-link-form')
         @else
             <div class="alert alert-success" role="alert">
                 <h4>Password reset link sent to mail!</h4>

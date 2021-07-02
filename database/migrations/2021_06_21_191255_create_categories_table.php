@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->text('description')->nullable();
             $table->text('image')->nullable();
             $table->boolean('available')->default(true);
+            $table->boolean('display_on_menu')->default(true);
             $table->timestamps();
         });
     }

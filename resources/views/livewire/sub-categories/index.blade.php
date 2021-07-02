@@ -1,8 +1,6 @@
-<div class="container">
-    <div class="row d-flex w-100">
-        <button type="button" class="btn btn-primary">Create category</button>
-    </div>
+<div>
     <table class="table">
+        <caption>Sub Categories</caption>
         <thead>
             <tr>
                 <th scope="col" colspan="2">Name</th>
@@ -12,22 +10,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($subCategories as $subCategory)
                 <tr>
                     <th scope="row" colspan="2">
                         <div>
-                            {{ $category->name }}
+                            {{ $subCategory->name }}
                         </div>
                     </th>
-                    <td>{{ $category->description }}</td>
-                    <td>{{ $category->available }}</td>
+                    <td>{{ $subCategory->description }}</td>
+                    <td>{{ $subCategory->available }}</td>
                     <td>
                         <button type="button" class="btn btn-primary">View category</button>
-                        <button type="button" class="btn btn-primary">Delete category</button>
+                        <button wire:click="delete({{ $subCategory->id }})" type="button"
+                            class="btn btn-primary">Delete</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $categories->links() }}
 </div>
