@@ -6,16 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\Auth\WelcomeUserNotification;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class RegisterController extends Controller
 {
 
-    public function show(Request $request)
+    public function create(Request $request)
     {
-        return view('auth.register');
+        return Inertia::render('Auth/Register');
     }
 
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'max:100', 'unique:users,email'],

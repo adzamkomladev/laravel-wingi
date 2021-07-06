@@ -35,10 +35,10 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home </a>
 
-                    @guest
+                    {{-- @guest
                     <a class="nav-link" aria-current="page" href="{{ route('auth.login.show') }}">Login </a>
                     <a class="nav-link" aria-current="page" href="{{ route('auth.register.show') }}">Register </a>
-                    @endguest
+                    @endguest --}}
                 </div>
             </div>
         </div>

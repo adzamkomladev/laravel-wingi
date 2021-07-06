@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="{{ route('auth.register') }}" method="POST">
+    {{-- <form action="{{ route('auth.register') }}" method="POST">
         @csrf
         <h3>Register</h3>
         <div class="form-group">
@@ -35,6 +35,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
-        <a class="link" href="{{ route('auth.login.show') }}">Login instead?</a>
+        <a class="link" href="{{ route('auth.login.show') }}">Login instead?</a> --}}
 
 @endsection

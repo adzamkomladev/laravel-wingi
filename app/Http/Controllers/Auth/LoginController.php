@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Events\Auth\LoggedIn;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class LoginController extends Controller
 {
 
-    public function show(Request $request)
+    public function create(Request $request)
     {
-        return view('auth.login');
+        return Inertia::render('Auth/Login');
     }
 
-    public function login(Request $request)
+    public function store(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'max:100', 'exists:users'],

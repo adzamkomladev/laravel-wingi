@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="{{ route('auth.login') }}" method="POST">
+    {{-- <form action="{{ route('auth.login') }}" method="POST">
         @csrf
         <h3>Login</h3>
         <div class="form-group">
@@ -24,6 +24,6 @@
     </form>
 
     <a class="link d-block" href="{{ route('auth.reset-password.create') }}">Forgot password?</a>
-    <a class="link" href="{{ route('auth.register.show') }}">New here? Sign up</a>
+    <a class="link" href="{{ route('auth.register.show') }}">New here? Sign up</a> --}}
 
 @endsection

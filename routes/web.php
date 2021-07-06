@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordLinkController;
 use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
@@ -23,18 +24,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Welcome page
-Route::get('/', ShowWelcomePage::class)->name('welcome');
+// Route::get('/', ShowWelcomePage::class)->name('welcome');
 
 
 // Auth Routes
 Route::prefix('auth')->group(function () {
-    Route::get('login', [LoginController::class, 'show'])->name('auth.login.show');
-    Route::post('login', [LoginController::class, 'login'])->name('auth.login');
-    Route::get('register', [RegisterController::class, 'show'])->name('auth.register.show');
-    Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
+    Route::get('login', [LoginController::class, 'create'])->name('auth.login');
+    Route::post('login', [LoginController::class, 'store'])->name('auth.login.store');
+    Route::get('register', [RegisterController::class, 'create'])->name('auth.register');
+    Route::post('register', [RegisterController::class, 'store'])->name('auth.register.store');
 
-    Route::get('reset-password', [ResetPasswordController::class, 'update'])->name('auth.reset-password');
-    Route::get('create-reset-password-link', [ResetPasswordController::class, 'create'])->name('auth.reset-password.create');
+    Route::get('reset-password', [ResetPasswordController::class, 'edit'])->name('auth.reset-password.edit');
+    Route::patch('reset-password/{user}', [ResetPasswordController::class, 'update'])->name('auth.reset-password.update');
+
+    Route::get('reset-password-link', [ResetPasswordLinkController::class, 'create'])->name('auth.reset-password-link.create');
+    Route::post('reset-password-link', [ResetPasswordLinkController::class, 'store'])->name('auth.reset-password-link.store');
 });
 
 // Client Routes that need authentication
