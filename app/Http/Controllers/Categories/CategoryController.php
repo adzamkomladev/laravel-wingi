@@ -1,33 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Categories;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response
     {
-        return view('categories.index', [
-            'categories' => Category::paginate(6)
+        return Inertia::render('Categories/Index', [
+            'categories' => Category::filter(request()->query('search'))->paginate(6),
+            'search' => request()->query('search')
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('categories.create');
+        return Inertia::render('Categories/Create');
     }
 
     /**
@@ -44,12 +45,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category): Response
     {
-        return view('categories.show', [
+        return Inertia::render('Categories/Show', [
             'category' => $category
         ]);
     }
@@ -60,9 +59,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category): Response
     {
-        return view('categories.edit', [
+        return Inertia::render('Categories/Show', [
             'category' => $category
         ]);
     }

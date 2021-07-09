@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordLinkController;
 use App\Http\Controllers\Brand\BrandController;
-use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Categories\CategoryController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
 use App\Http\Controllers\Dashboard\ShowClientDashboard;
 use App\Http\Controllers\ShowWelcomePage;
@@ -48,14 +48,17 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Admin Routes
-Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () {
+Route::prefix('admin')
+    ->name('admin.')
+    // ->middleware(['auth', IsAdmin::class])
+    ->group(function () {
 
-    // Dashboard
-    Route::get('dashboard', ShowAdminDashboard::class)->name('admin.dashboard');
+        // Dashboard
+        Route::get('dashboard', ShowAdminDashboard::class)->name('dashboard');
 
-    // Categories
-    Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+        // Categories
+        Route::resource('categories', CategoryController::class);
 
-    // Brands
-    Route::get('brands', [BrandController::class, 'index'])->name('admin.brands.index');
-});
+        // Brands
+        Route::get('brands', [BrandController::class, 'index'])->name('brands.index');
+    });

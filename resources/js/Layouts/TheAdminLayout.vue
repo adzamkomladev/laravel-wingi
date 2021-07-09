@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
-            <inertia-link class="navbar-brand" :href="route('welcome')"
+            <!-- <inertia-link class="navbar-brand" :href="route('welcome')"
                 >WingiShop</inertia-link
-            >
+            > -->
             <button
                 class="navbar-toggler"
                 type="button"
@@ -39,9 +39,7 @@
             </div>
         </div>
     </nav>
-        <div class="container">
-        <slot />
-    </div>
+    <slot />
 </template>
 
 <script>
