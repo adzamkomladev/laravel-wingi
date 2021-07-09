@@ -2,70 +2,42 @@
     <div>
         <form>
             <h3>Register</h3>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    :class="{
-                        'is-invalid': form.errors.name,
-                    }"
-                    v-model="form.name"
-                    id="name"
-                    placeholder="Enter your name"
-                />
-                <div v-if="form.errors.name" class="invalid-feedback">
-                    {{ form.errors.name }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone number</label>
-                <input
-                    type="tel"
-                    class="form-control"
-                    :class="{
-                        'is-invalid': form.errors.phone,
-                    }"
-                    v-model="form.phone"
-                    id="phone"
-                    placeholder="Enter your phone number"
-                />
-                <div v-if="form.errors.phone" class="invalid-feedback">
-                    {{ form.errors.phone }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input
-                    type="email"
-                    class="form-control"
-                    v-model="form.email"
-                    :class="{
-                        'is-invalid': form.errors.email,
-                    }"
-                    id="email"
-                    placeholder="Enter your Email address"
-                />
-                <div v-if="form.errors.email" class="invalid-feedback">
-                    {{ form.errors.email }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    :class="{
-                        'is-invalid': form.errors.password,
-                    }"
-                    v-model="form.password"
-                    id="password"
-                    placeholder="Your Password"
-                />
-                <div v-if="form.errors.password" class="invalid-feedback">
-                    {{ form.errors.password }}
-                </div>
-            </div>
+            <input-control
+                id="name"
+                class="mt-3"
+                type="text"
+                label="Name"
+                placehoder="Your Name"
+                v-model="form.name"
+                :error="form.errors.name"
+            ></input-control>
+            <input-control
+                id="phone"
+                class="mt-3"
+                type="tel"
+                label="Phone Number"
+                placehoder="Your Phone Number"
+                v-model="form.phone"
+                :error="form.errors.phone"
+            ></input-control>
+            <input-control
+                id="email"
+                class="mt-3"
+                type="email"
+                label="Email address"
+                placehoder="Your Email address"
+                v-model="form.email"
+                :error="form.errors.email"
+            ></input-control>
+            <input-control
+                id="password"
+                class="mt-3"
+                type="password"
+                label="Password"
+                placehoder="Your Password "
+                v-model="form.password"
+                :error="form.errors.password"
+            ></input-control>
             <button
                 type="submit"
                 class="btn btn-primary"
@@ -84,9 +56,13 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import Auth from "@/Layouts/Auth";
+import InputControl from "@/Shared/Form/InputControl";
 
 export default {
     layout: Auth,
+    components: {
+        InputControl,
+    },
     setup() {
         const form = useForm({
             name: null,

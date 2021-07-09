@@ -1,39 +1,24 @@
 <template>
     <form @submit.prevent="onSubmit">
         <h3>Login</h3>
-        <div class="form-group">
-            <label class="form-label" for="email">Email address</label>
-            <input
-                type="email"
-                class="form-control"
-                :class="{
-                    'is-invalid': form.errors.email,
-                }"
-                v-model="form.email"
-                id="email"
 
-                placeholder="Enter your Email address"
-            />
-            <div v-if="form.errors.email" class="invalid-feedback">
-                {{ form.errors.email }}
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="password">Password</label>
-            <input
-                type="password"
-                class="form-control"
-                :class="{
-                    'is-invalid': form.errors.password,
-                }"
-                v-model="form.password"
-                id="password"
-                placeholder="Your Password"
-            />
-            <div v-if="form.errors.password" class="invalid-feedback">
-                {{ form.errors.password }}
-            </div>
-        </div>
+        <input-control
+            id="email"
+            type="email"
+            label="Email address"
+            placehoder="Your Email address"
+            v-model="form.email"
+            :error="form.errors.email"
+        ></input-control>
+        <input-control
+            class="mt-3"
+            id="password"
+            type="password"
+            label="Password"
+            placehoder="Your Password "
+            v-model="form.password"
+            :error="form.errors.password"
+        ></input-control>
 
         <button
             type="submit"
@@ -58,9 +43,13 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import Auth from "@/Layouts/Auth";
+import InputControl from "@/Shared/Form/InputControl";
 
 export default {
     layout: Auth,
+    components: {
+        InputControl,
+    },
     setup() {
         const form = useForm({
             email: null,

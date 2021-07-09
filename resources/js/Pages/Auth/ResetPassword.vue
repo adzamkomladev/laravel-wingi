@@ -6,17 +6,16 @@
                 <p>Kindly reset your password below!</p>
 
                 <form @submit.prevent="onSubmit">
-                    <input
-                        class="form-control"
-                        :class="{
-                            'is-invalid': form.errors.password,
-                        }"
+                    <input-control
+                        class="mt-3"
+                        id="password"
                         type="password"
+                        label="Password"
+                        placehoder="Your Password "
                         v-model="form.password"
-                    />
-                    <div v-if="form.errors.password" class="invalid-feedback">
-                        {{ form.errors.password }}
-                    </div>
+                        :error="form.errors.password"
+                    ></input-control>
+
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -46,9 +45,13 @@ import { ref, toRefs } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import Auth from "@/Layouts/Auth";
+import InputControl from "@/Shared/Form/InputControl";
 
 export default {
     layout: Auth,
+    components: {
+        InputControl,
+    },
     props: {
         user: Object,
     },

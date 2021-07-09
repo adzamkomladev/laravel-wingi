@@ -42212,7 +42212,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_Login_vue":"f43a7c9402da200778b9","resources_js_Pages_Auth_Register_vue":"2fee2fed9cd89a7bef7e","resources_js_Pages_Auth_ResetPassword_vue":"cabf81eea4afbc40a626","resources_js_Pages_Auth_ResetPasswordLink_vue":"2cfe1b52ba6ad5349a34","resources_js_Pages_Brands_Create_vue":"9eef252dad5dd80c0271","resources_js_Pages_Brands_Edit_vue":"f336e9739650a03dd313","resources_js_Pages_Brands_Index_vue":"5357157757db27226767","resources_js_Pages_Brands_Show_vue":"fdf4ee77c7d75548335f","resources_js_Pages_Categories_Index_vue":"d0790e400c2f2e287c67"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_Login_vue":"453f2d22cd533e232c5a","resources_js_Pages_Auth_Register_vue":"103be39f41a0203f694e","resources_js_Pages_Auth_ResetPassword_vue":"8d8423c0b453172e8357","resources_js_Pages_Auth_ResetPasswordLink_vue":"04b27555173a46805795","resources_js_Pages_Brands_Create_vue":"9eef252dad5dd80c0271","resources_js_Pages_Brands_Edit_vue":"f336e9739650a03dd313","resources_js_Pages_Brands_Index_vue":"5357157757db27226767","resources_js_Pages_Brands_Show_vue":"fdf4ee77c7d75548335f","resources_js_Pages_Categories_Index_vue":"d0790e400c2f2e287c67"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	

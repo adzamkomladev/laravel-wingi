@@ -8,17 +8,15 @@
                 </h5>
 
                 <form @submit.prevent="onSubmit">
-                    <input
-                        class="form-control"
-                        :class="{
-                            'is-invalid': form.errors.email,
-                        }"
+                    <input-control
+                        id="email"
                         type="email"
+                        label="Email address"
+                        placehoder="Your Email address"
                         v-model="form.email"
-                    />
-                    <div v-if="form.errors.email" class="invalid-feedback">
-                        {{ form.errors.email }}
-                    </div>
+                        :error="form.errors.email"
+                    ></input-control>
+
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -42,9 +40,13 @@ import { ref } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import Auth from "@/Layouts/Auth";
+import InputControl from "@/Shared/Form/InputControl";
 
 export default {
     layout: Auth,
+    components: {
+        InputControl,
+    },
     setup() {
         const form = useForm({
             email: null,
