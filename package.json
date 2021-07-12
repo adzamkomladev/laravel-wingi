@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@types/lodash": "^4.14.171",
         "@vue/compiler-sfc": "^3.0.5",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",

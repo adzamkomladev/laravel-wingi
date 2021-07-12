@@ -83,7 +83,7 @@ __webpack_require__.r(__webpack_exports__);
     id: {
       type: String,
       "default": function _default() {
-        return "input-".concat(Date.now);
+        return "input-".concat(Math.random() * 1000);
       }
     },
     type: {
@@ -98,24 +98,26 @@ __webpack_require__.r(__webpack_exports__);
     modelValue: String,
     label: String
   },
-  setup: function setup(props, _ref) {
-    var attrs = _ref.attrs;
+  setup: function setup(_, _ref) {
+    var attrs = _ref.attrs,
+        emit = _ref.emit;
     var input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
 
     var focus = function focus() {
-      return input.focus();
+      return input.value.focus();
     };
 
     var select = function select() {
-      return input.select();
+      return input.value.select();
     };
 
     var setSelectionRange = function setSelectionRange(start, end) {
-      return input.setSelectionRange(start, end);
+      return input.value.setSelectionRange(start, end);
     };
 
     return {
       attrs: attrs,
+      emit: emit,
       input: input,
       focus: focus,
       select: select,
@@ -260,7 +262,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: $props.type,
     value: $props.modelValue,
     onInput: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.$emit('update:modelValue', $event.target.value);
+      return $setup.emit('update:modelValue', $event.target.value);
     }),
     placeholder: $props.placeholder
   }), null, 16

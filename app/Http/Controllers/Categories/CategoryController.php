@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Categories;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -34,12 +35,17 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Category::create($validated);
+
+        return redirect()->route('admin.categories.index')->with([
+            'success' => 'Category created successfully!'
+        ]);
     }
 
     /**
@@ -61,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category): Response
     {
-        return Inertia::render('Categories/Show', [
+        return Inertia::render('Categories/Edit', [
             'category' => $category
         ]);
     }

@@ -1,18 +1,18 @@
 <template>
     <div class="form-floating" :class="attrs.class">
-        <input
-            :id="id"
+        <textarea
             ref="input"
+            :id="id"
             v-bind="{ ...attrs, class: null }"
             class="form-control"
             :class="{ 'is-invalid': error }"
-            :type="type"
+            :placeholder="placeholder"
             :value="modelValue"
             @input="emit('update:modelValue', $event.target.value)"
-            :placeholder="placeholder"
-        />
-        <label v-if="label" :for="id">{{ label }}:</label>
-        <div v-if="error" class="invalid-feedback">{{ error }}</div>
+            style="height: 100px"
+        ></textarea>
+        <label v-if="label" :for="id">{{ label }}</label>
+        <div v-if="error" class="form-error">{{ error }}</div>
     </div>
 </template>
 
@@ -20,32 +20,27 @@
 import { ref } from "vue";
 
 export default {
+    inheritAttrs: false,
     props: {
         id: {
             type: String,
-            default: () => `input-${Math.random() * 1000}`,
-        },
-        type: {
-            type: String,
-            default: "text",
+            default: () => `textarea-${Math.random() * 1000}`,
         },
         placeholder: {
             type: String,
-            default: "Enter your value here!",
+            default: "Enter your value",
         },
-        error: String,
         modelValue: String,
         label: String,
+        error: String,
     },
     setup(_, { attrs, emit }) {
         const input = ref(null);
 
         const focus = () => input.value.focus();
         const select = () => input.value.select();
-        const setSelectionRange = (start, end) =>
-            input.value.setSelectionRange(start, end);
 
-        return { attrs, emit, input, focus, select, setSelectionRange };
+        return { attrs, emit, input, focus, select };
     },
 };
 </script>
