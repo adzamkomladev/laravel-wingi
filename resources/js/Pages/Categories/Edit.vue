@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <form @submit.prevent="onSubmit">
-            <h3>Edit brand</h3>
+            <h3>Edit category</h3>
             <input-control
                 id="name"
                 class="mt-3"
                 type="text"
-                label="Brand Name"
-                placehoder="Brand Name"
+                label="Category Name"
+                placehoder="Category Name"
                 v-model="form.name"
                 :error="form.errors.name"
             ></input-control>
@@ -15,7 +15,7 @@
                 id="description"
                 class="mt-3"
                 label="Description"
-                placehoder="Brand Description"
+                placehoder="Category Description"
                 v-model="form.description"
                 :error="form.errors.description"
             ></textarea-control>
@@ -78,23 +78,23 @@ export default {
         FileInputControl,
     },
     props: {
-        brand: Object,
+        category: Object,
     },
     setup(props) {
-        const imageUrl = ref(props.brand.image_url);
+        const imageUrl = ref(props.category.image_url);
 
         const form = useForm({
-            name: props.brand.name,
-            description: props.brand.description,
+            name: props.category.name,
+            description: props.category.description,
             image: null,
-            show: props.brand.show,
-            available: props.brand.show,
+            show: props.category.show,
+            available: props.category.show,
         });
 
         const onSubmit = () => {
             form.post(
-                route("admin.brands.update", {
-                    brand: props.brand,
+                route("admin.categories.update", {
+                    category: props.category,
                 }),
                 {
                     preserveScroll: true,

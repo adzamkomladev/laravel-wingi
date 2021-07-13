@@ -46,11 +46,22 @@
                             type="button"
                             class="btn btn-primary"
                         >
-                            View brand
+                            View
                         </inertia-link>
-                        <button type="button" class="btn btn-primary">
+                        <inertia-link
+                            :href="
+                                route('admin.brands.edit', {
+                                    brand,
+                                })
+                            "
+                            type="button"
+                            class="btn btn-secondary"
+                        >
+                            Edit
+                        </inertia-link>
+                        <!-- <button type="button" class="btn btn-primary">
                             Delete brand
-                        </button>
+                        </button> -->
                     </td>
                 </tr>
             </tbody>

@@ -57,8 +57,10 @@ Route::prefix('admin')
         Route::get('dashboard', ShowAdminDashboard::class)->name('dashboard');
 
         // Categories
-        Route::resource('categories', CategoryController::class);
+        Route::resource('categories', CategoryController::class)->except(['update']);
+        Route::post('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 
         // Brands
-        Route::resource('brands', BrandController::class);
+        Route::resource('brands', BrandController::class)->except(['update']);
+        Route::post('brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
     });

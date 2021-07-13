@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Categories;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -75,13 +78,23 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $validated = $request->validated();
+
+        $previousImageUrl = $category->image;
+
+        $category->update($validated);
+
+        if (Arr::has($validated, 'image')) {
+            Storage::disk('public')->delete($previousImageUrl);
+        }
+
+        return redirect()->route('admin.categories.index')->with([
+            'success' => 'Category updated successfully!'
+        ]);
     }
 
     /**

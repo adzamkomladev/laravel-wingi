@@ -46,11 +46,22 @@
                             type="button"
                             class="btn btn-primary"
                         >
-                            View category
+                            View
                         </inertia-link>
-                        <button type="button" class="btn btn-primary">
+                        <inertia-link
+                            :href="
+                                route('admin.categories.edit', {
+                                    category,
+                                })
+                            "
+                            type="button"
+                            class="btn btn-secondary"
+                        >
+                            Edit
+                        </inertia-link>
+                        <!-- <button type="button" class="btn btn-primary">
                             Delete category
-                        </button>
+                        </button> -->
                     </td>
                 </tr>
             </tbody>

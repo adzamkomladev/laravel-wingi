@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Brands;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\UpdateBrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -74,13 +77,23 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $validated = $request->validated();
+
+        $previousImageUrl = $brand->image;
+
+        $brand->update($validated);
+
+        if (Arr::has($validated, 'image')) {
+            Storage::disk('public')->delete($previousImageUrl);
+        }
+
+        return redirect()->route('admin.brands.index')->with([
+            'success' => 'Brand updated successfully!'
+        ]);
     }
 
     /**

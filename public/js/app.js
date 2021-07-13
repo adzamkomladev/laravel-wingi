@@ -42075,6 +42075,14 @@ var map = {
 		"./resources/js/Pages/Categories/Create.vue",
 		"resources_js_Pages_Categories_Create_vue"
 	],
+	"./Categories/Edit": [
+		"./resources/js/Pages/Categories/Edit.vue",
+		"resources_js_Pages_Categories_Edit_vue"
+	],
+	"./Categories/Edit.vue": [
+		"./resources/js/Pages/Categories/Edit.vue",
+		"resources_js_Pages_Categories_Edit_vue"
+	],
 	"./Categories/Index": [
 		"./resources/js/Pages/Categories/Index.vue",
 		"resources_js_Pages_Categories_Index_vue"
@@ -42220,7 +42228,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_Login_vue":"d1121a94f1b11b8eccf5","resources_js_Pages_Auth_Register_vue":"b1f554f9c20dcfc61645","resources_js_Pages_Auth_ResetPassword_vue":"ce3ac0e9a3c6d50e1815","resources_js_Pages_Auth_ResetPasswordLink_vue":"a418f183d952111cf7bc","resources_js_Pages_Brands_Create_vue":"1d4d6368174d043a8d6e","resources_js_Pages_Brands_Edit_vue":"f336e9739650a03dd313","resources_js_Pages_Brands_Index_vue":"27193e9ead55d56809da","resources_js_Pages_Brands_Show_vue":"fdf4ee77c7d75548335f","resources_js_Pages_Categories_Create_vue":"bbc2a28efe89f50dd64f","resources_js_Pages_Categories_Index_vue":"06f45c68f05a492b0a00"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_Login_vue":"d1121a94f1b11b8eccf5","resources_js_Pages_Auth_Register_vue":"b1f554f9c20dcfc61645","resources_js_Pages_Auth_ResetPassword_vue":"ce3ac0e9a3c6d50e1815","resources_js_Pages_Auth_ResetPasswordLink_vue":"a418f183d952111cf7bc","resources_js_Pages_Brands_Create_vue":"1d4d6368174d043a8d6e","resources_js_Pages_Brands_Edit_vue":"a22c07cc910676320b7b","resources_js_Pages_Brands_Index_vue":"177d5abc297c937bdcb8","resources_js_Pages_Brands_Show_vue":"fdf4ee77c7d75548335f","resources_js_Pages_Categories_Create_vue":"bbc2a28efe89f50dd64f","resources_js_Pages_Categories_Edit_vue":"ac9231299b7cee2cd7f3","resources_js_Pages_Categories_Index_vue":"ec70018da078dda79a0a"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	
