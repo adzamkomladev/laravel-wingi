@@ -30,8 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _Layouts_TheAdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Layouts/TheAdminLayout */ "./resources/js/Layouts/TheAdminLayout.vue");
-/* harmony import */ var _Shared_BasePagination_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Shared/BasePagination.vue */ "./resources/js/Shared/BasePagination.vue");
+/* harmony import */ var _Layouts_TheAdminLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Layouts/TheAdminLayout */ "./resources/js/Layouts/TheAdminLayout.vue");
+/* harmony import */ var _Shared_BasePagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Shared/BasePagination */ "./resources/js/Shared/BasePagination.vue");
 
 
 
@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   layout: _Layouts_TheAdminLayout__WEBPACK_IMPORTED_MODULE_3__.default,
   components: {
-    BasePagination: _Shared_BasePagination_vue__WEBPACK_IMPORTED_MODULE_4__.default
+    BasePagination: _Shared_BasePagination__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
     categories: Object,
@@ -200,7 +200,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 var _hoisted_2 = {
-  "class": "row align-items-end"
+  "class": "my-5 d-flex justify-content-between"
 };
 var _hoisted_3 = {
   "class": "form-group"

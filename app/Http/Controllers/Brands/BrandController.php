@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Brand;
+namespace App\Http\Controllers\Brands;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class BrandController extends Controller
 {
@@ -15,50 +18,57 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('brands.index');
+        return Inertia::render('Brands/Index', [
+            'brands' => Brand::filter(request()->query('search'))->paginate(6),
+            'search' => request()->query('search')
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        return Inertia::render('Brands/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Brand::create($validated);
+
+        return redirect()->route('admin.brands.index')->with([
+            'success' => 'Brand created successfully!'
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
-     * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Brand $brand): Response
     {
-        //
+        return Inertia::render('Brands/Show', [
+            'brand' => $brand
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Brand $brand): Response
     {
-        //
+        return Inertia::render('Brands/Edit', [
+            'brand' => $brand
+        ]);
     }
 
     /**

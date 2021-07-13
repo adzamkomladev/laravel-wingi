@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row align-items-end">
+        <div class="my-5 d-flex justify-content-between">
             <div class="form-group">
                 <input
                     @keyup="onSearch"
@@ -65,8 +65,8 @@ import throttle from "lodash/throttle";
 
 import { Inertia } from "@inertiajs/inertia";
 
-import TheAdminLayout from "../../Layouts/TheAdminLayout";
-import BasePagination from "../../Shared/BasePagination.vue";
+import TheAdminLayout from "@/Layouts/TheAdminLayout";
+import BasePagination from "@/Shared/BasePagination";
 
 export default {
     layout: TheAdminLayout,

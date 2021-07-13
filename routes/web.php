@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordLinkController;
-use App\Http\Controllers\Brand\BrandController;
+use App\Http\Controllers\Brands\BrandController;
 use App\Http\Controllers\Categories\CategoryController;
 use App\Http\Controllers\Dashboard\ShowAdminDashboard;
 use App\Http\Controllers\Dashboard\ShowClientDashboard;
@@ -60,5 +60,5 @@ Route::prefix('admin')
         Route::resource('categories', CategoryController::class);
 
         // Brands
-        Route::get('brands', [BrandController::class, 'index'])->name('brands.index');
+        Route::resource('brands', BrandController::class);
     });

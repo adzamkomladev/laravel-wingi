@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class StoreBrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:100', 'unique:categories'],
+            'name' => ['required', 'max:100', 'unique:brands'],
             'description' => ['nullable', 'string'],
             'image' => ['required', 'image'],
             'show' => ['required', 'boolean'],
@@ -39,8 +39,8 @@ class StoreCategoryRequest extends FormRequest
 
         return array_merge(parent::validated(), [
             'image' =>  $image->storePubliclyAs(
-                'categories',
-                Carbon::now()->timestamp . "category.{$image->extension()}",
+                'brands',
+                Carbon::now()->timestamp . "brand.{$image->extension()}",
                 'public'
             )
         ]);

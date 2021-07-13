@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <form @submit.prevent="onSubmit">
             <h3>Create new category</h3>
             <input-control
@@ -55,14 +55,14 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 
-import Auth from "@/Layouts/Auth";
+import TheAdminLayout from "@/Layouts/TheAdminLayout";
 import InputControl from "@/Shared/Form/InputControl";
 import TextareaControl from "@/Shared/Form/TextareaControl";
 import CheckboxControl from "@/Shared/Form/CheckboxControl";
 import FileInputControl from "@/Shared/Form/FileInputControl";
 
 export default {
-    layout: Auth,
+    layout: TheAdminLayout,
     components: {
         InputControl,
         TextareaControl,

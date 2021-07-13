@@ -27,7 +27,7 @@ export default {
             default: () => `checkbox-${Date.now}`,
         },
         error: String,
-        modelValue: String,
+        modelValue: Boolean,
         label: String,
     },
     setup(_, { attrs, emit }) {
