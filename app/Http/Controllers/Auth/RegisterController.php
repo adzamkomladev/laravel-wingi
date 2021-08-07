@@ -32,7 +32,6 @@ class RegisterController extends Controller
         auth()->login($user);
 
         $user->notify(new WelcomeUserNotification($user));
-        // dd($user);
 
         return redirect()->intended('/');
     }
