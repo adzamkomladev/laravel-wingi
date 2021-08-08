@@ -10,21 +10,21 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@types/lodash": "^4.14.171",
-        "@vue/compiler-sfc": "^3.0.5",
-        "autoprefixer": "^10.2.4",
+        "@types/lodash": "^4.14.172",
+        "@vue/compiler-sfc": "^3.1.5",
+        "autoprefixer": "^10.3.1",
         "axios": "^0.21",
         "babel-plugin-import": "^1.13.3",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.27",
         "lodash": "^4.17.19",
-        "postcss": "^8.2.1",
-        "vue": "^3.0.11",
-        "vue-loader": "^16.2.0"
+        "postcss": "^8.3.6",
+        "vue": "^3.1.5",
+        "vue-loader": "^16.5.0"
     },
     "dependencies": {
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "@inertiajs/inertia": "^0.9.2",
-        "@inertiajs/inertia-vue3": "^0.4.7",
-        "@inertiajs/progress": "^0.2.5"
+        "@inertiajs/inertia": "^0.10.1",
+        "@inertiajs/inertia-vue3": "^0.5.2",
+        "@inertiajs/progress": "^0.2.6"
     }
 }
