@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
-            <!-- <inertia-link class="navbar-brand" :href="route('welcome')"
-                >WingiShop</inertia-link
+            <!-- <Link class="navbar-brand" :href="route('welcome')"
+                >WingiShop</Link
             > -->
             <button
                 class="navbar-toggler"
@@ -17,24 +17,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarID">
                 <div class="navbar-nav">
-                    <inertia-link
+                    <Link
                         class="nav-link active"
                         aria-current="page"
                         :href="route('admin.dashboard')"
                         >Dashboard
-                    </inertia-link>
-                    <inertia-link
+                    </Link>
+                    <Link
                         class="nav-link"
                         aria-current="page"
                         :href="route('admin.categories.index')"
                         >Categories
-                    </inertia-link>
-                    <inertia-link
+                    </Link>
+                    <Link
                         class="nav-link"
                         aria-current="page"
                         :href="route('admin.brands.index')"
                         >Brands
-                    </inertia-link>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -43,5 +43,9 @@
 </template>
 
 <script>
-export default {};
+import { Link } from "@inertiajs/inertia-vue3";
+
+export default {
+    components: { Link },
+};
 </script>

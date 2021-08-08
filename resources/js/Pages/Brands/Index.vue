@@ -10,13 +10,13 @@
                     placeholder="Search..."
                 />
             </div>
-            <inertia-link
+            <Link
                 type="button"
                 class="btn btn-primary"
                 :href="route('admin.brands.create')"
             >
                 Create
-            </inertia-link>
+            </Link>
         </div>
         <table class="table">
             <thead>
@@ -37,7 +37,7 @@
                     <td>{{ brand?.description }}</td>
                     <td>{{ brand?.available }}</td>
                     <td>
-                        <inertia-link
+                        <Link
                             :href="
                                 route('admin.brands.show', {
                                     brand,
@@ -47,8 +47,8 @@
                             class="btn btn-primary"
                         >
                             View
-                        </inertia-link>
-                        <inertia-link
+                        </Link>
+                        <Link
                             :href="
                                 route('admin.brands.edit', {
                                     brand,
@@ -58,7 +58,7 @@
                             class="btn btn-secondary"
                         >
                             Edit
-                        </inertia-link>
+                        </Link>
                         <!-- <button type="button" class="btn btn-primary">
                             Delete brand
                         </button> -->
@@ -66,7 +66,10 @@
                 </tr>
             </tbody>
         </table>
-        <base-pagination :links="brands.links"></base-pagination>
+        <base-pagination
+            :links="brands.links"
+            value-name="brands"
+        ></base-pagination>
     </div>
 </template>
 <script>
@@ -75,13 +78,14 @@ import { ref } from "vue";
 import throttle from "lodash/throttle";
 
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-vue3";
 
 import TheAdminLayout from "@/Layouts/TheAdminLayout";
 import BasePagination from "@/Shared/BasePagination";
 
 export default {
     layout: TheAdminLayout,
-    components: { BasePagination },
+    components: { Link, BasePagination },
     props: {
         brands: Object,
         search: String,

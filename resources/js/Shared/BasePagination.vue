@@ -11,11 +11,12 @@
                     ></div>
                 </li>
                 <li v-else class="page-item" :class="{ active: link.active }">
-                    <inertia-link
+                    <Link
                         v-html="link.label"
                         class="page-link"
                         :href="link.url"
-                    ></inertia-link>
+                        :only="[valueName]"
+                    ></Link>
                 </li>
             </template>
         </ul>
@@ -23,9 +24,13 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+    components: { Link },
     props: {
         links: Array,
+        valueName: String,
     },
 };
 </script>
