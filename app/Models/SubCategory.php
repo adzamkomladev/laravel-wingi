@@ -19,6 +19,10 @@ class SubCategory extends Model
         'available'
     ];
 
+    protected $appends = [
+        'image_url',
+    ];
+
     public function getImageUrlAttribute(): string
     {
         return Str::startsWith($this->image, 'http')

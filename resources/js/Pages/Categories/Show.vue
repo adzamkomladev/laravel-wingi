@@ -2,12 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h3>{{ category.name }}</h3>
-                <p>{{ category.description }}</p>
-                <img :src="category.image_url" class="img img-fluid" />
+                <h4 class="h4">{{ category.name }}</h4>
+                <p class="lead">{{ category.description }}</p>
+                <img width="240" :src="category.image_url" class="img-fluid" />
             </div>
             <div class="col-md-5">
-                <table v-if="isSubCategoriesEmpty" class="table caption-top">
+                <div v-if="isSubCategoriesEmpty">No sub categories yet</div>
+                <table v-else class="table caption-top">
                     <caption>
                         List of Sub Categories
                     </caption>
@@ -20,45 +21,44 @@
                     </thead>
                     <tbody>
                         <tr
-                            v-for="(subCategory, index) in category.subCategory"
+                            v-for="(
+                                subCategory, index
+                            ) in category.sub_categories"
                             :key="index"
                         >
                             <td scope="row" colspan="2">
-                                <div
-                                    class="d-flex justify-content-between w-100"
-                                >
+                                <div class="d-flex w-100">
                                     <img
                                         :src="subCategory?.image_url"
                                         class="img-fluid"
                                         :alt="`${subCategory?.name}'s image`"
+                                        width="80"
                                     />
-                                    <p>{{ subCategory?.name }}</p>
+                                    <p class="ms-2 fw-bold">
+                                        {{ subCategory?.name }}
+                                    </p>
                                 </div>
                             </td>
                             <td>{{ subCategory?.available }}</td>
                             <td>
-                                <Link
-                                    :href="
-                                        route('admin.categories.show', {
-                                            category,
-                                        })
-                                    "
+                                <button
+                                    @click.prevent="onShow(subCategory)"
                                     type="button"
-                                    class="btn btn-primary"
+                                    class="btn btn-primary me-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#showModal"
                                 >
                                     View
-                                </Link>
-                                <Link
-                                    :href="
-                                        route('admin.categories.edit', {
-                                            category,
-                                        })
-                                    "
+                                </button>
+                                <button
+                                    @click.prevent="onShow(subCategory)"
                                     type="button"
-                                    class="btn btn-secondary"
+                                    class="btn btn-primary me-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editModal"
                                 >
                                     Edit
-                                </Link>
+                                </button>
                                 <!-- <button type="button" class="btn btn-primary">
                             Delete category
                         </button> -->
@@ -66,17 +66,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <Link
-                    :href="
-                        route('admin.categories.edit', {
-                            category,
-                        })
-                    "
+
+                <button
+                    @click.prevent="onShow(subCategory)"
                     type="button"
                     class="btn btn-secondary d-block"
+                    data-bs-toggle="modal"
+                    data-bs-target="#showModal"
                 >
                     Add new sub category
-                </Link>
+                </button>
             </div>
         </div>
         <!-- Button trigger modal -->
@@ -84,37 +83,81 @@
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#showModal"
         >
             Launch demo modal
         </button>
 
-        <!-- Modal -->
-
+        <!-- Modals -->
+        <Modal id="showModal" direction="right">
+            <template v-slot:title>View sub category</template>
+            <template v-slot:body>
+                <ShowContent
+                    v-if="selectedSubCategory"
+                    :sub-category="selectedSubCategory"
+                ></ShowContent>
+            </template>
+            <template v-slot:footer>
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+            </template>
+        </Modal>
+        <Modal id="editModal" direction="right">
+            <template v-slot:title> Create a new sub category </template>
+            <template v-slot:body>
+                <ShowContent
+                    v-if="selectedSubCategory"
+                    :sub-category="selectedSubCategory"
+                ></ShowContent>
+            </template>
+            <template v-slot:footer>
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+            </template>
+        </Modal>
     </div>
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 import { Link } from "@inertiajs/inertia-vue3";
 
 import TheAdminLayout from "@/Layouts/TheAdminLayout";
+import Modal from "@/Shared/Modal";
+import ShowContent from "@/Shared/Components/SubCategories/ShowContent";
 
 export default {
     layout: TheAdminLayout,
     components: {
         Link,
+        Modal,
+        ShowContent,
     },
     props: {
         category: Object,
     },
     setup({ category }) {
         const isSubCategoriesEmpty = computed(
-            () => category?.subCategories?.length === 0
+            () => category?.sub_categories?.length === 0
         );
 
-        return { category, isSubCategoriesEmpty };
+        const selectedSubCategory = ref(null);
+
+        const onShow = (subCategory) =>
+            (selectedSubCategory.value = subCategory);
+
+        return { category, isSubCategoriesEmpty, selectedSubCategory, onShow };
     },
 };
 </script>
